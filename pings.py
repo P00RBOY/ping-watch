@@ -25,7 +25,7 @@ print(f'of {host} is {s.gethostbyname(host)}')
 
 def check_internet_connection():
     try:
-        print("Ingrese la pagina o el host: ")
+        print("Ingrese la pagina completa (http o https): ")
         get(input(''),  timeout =10)
         print('El servidor esta conectado')
     except exceptions.ConnectionError:
