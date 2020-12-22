@@ -27,9 +27,9 @@ decorated()
 host = input("")
 
 print("Esta es la direccion ip del sitio " + host)
+print(f'of {host} is {s.gethostbyname(host)}')
 print("=========================================")
 print("")
-print(f'of {host} is {s.gethostbyname(host)}')
 
 #Codigo para encontrar el dns activo
 def check_internet_connection():
