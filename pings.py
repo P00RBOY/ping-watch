@@ -1,9 +1,8 @@
 #Autor poorboy
 #Modulos a importar
 from requests import get, exceptions
-from tabulate import tabulate
 import socket as s
-from pyfiglet import Figlet
+import nmap
 from art import *
 
 #Ascii art
@@ -41,3 +40,23 @@ def check_internet_connection():
     except exceptions.ConnectionError:
         print('El servidor no conectado')
 check_internet_connection()
+
+print("")
+
+print("Escaner de puertos")
+
+nm=nmap.PortScanner()
+
+ip=input("IP: ")
+nm.scan(hosts=ip, arguments="--top-ports 65535 -sV --version-intensity 3")
+print("")
+print("comando ejecutado: {}".format(nm.command_line()))
+
+print("Protocolos utilizados: {}".format(nm[ip].all_protocols()))
+
+print("Estado de la maquina: {}".format(nm[ip].state()))
+
+print("Puertos abiertos")
+for puerto in nm[ip]['tcp'].keys():
+	print(puerto)
+
